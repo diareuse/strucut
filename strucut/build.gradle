@@ -1,0 +1,9 @@
+plugins {
+    id 'is-java-library'
+}
+
+dependencies {
+    implementation "com.google.code.gson:gson:2.10"
+    testImplementation "org.jetbrains.kotlin:kotlin-test"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit5"
+}
