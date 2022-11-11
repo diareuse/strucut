@@ -1,5 +1,17 @@
 package strucut
 
+class Strucut(
+    private val builder: StructScope.Builder
+) {
+
+    fun verify(json: String) = verifyStructureOf(json) {
+        builder.apply {
+            create()
+        }
+    }
+
+}
+
 inline fun verifyStructureOf(json: String, scope: StructScope.() -> Unit) {
     val struct = StructScopeBuilder().apply(scope).build()
     try {
