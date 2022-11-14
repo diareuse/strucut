@@ -1,0 +1,33 @@
+name: Checks
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [ opened, synchronize ]
+
+jobs:
+  api-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-java@v3
+        with:
+          java-version: 11
+          distribution: temurin
+
+      - name: Publish Library
+        run: ./gradlew apiCheck
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-java@v3
+        with:
+          java-version: 11
+          distribution: temurin
+
+      - name: Publish Library
+        run: ./gradlew check
