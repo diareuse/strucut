@@ -1,0 +1,79 @@
+public abstract interface class strucut/StructScope {
+	public static final field Companion Lstrucut/StructScope$Companion;
+	public abstract fun prop (Ljava/lang/String;)Lstrucut/StructScope;
+	public abstract fun prop (Ljava/lang/String;Ljava/lang/Object;)Lstrucut/StructScope;
+	public abstract fun prop (Ljava/lang/String;Lstrucut/StructScope$Builder;)Lstrucut/StructScope;
+	public abstract fun propOpt (Ljava/lang/String;)Lstrucut/StructScope;
+	public abstract fun propOpt (Ljava/lang/String;Ljava/lang/Object;)Lstrucut/StructScope;
+	public abstract fun propOpt (Ljava/lang/String;Lstrucut/StructScope$Builder;)Lstrucut/StructScope;
+	public static fun structureScopeOf (Lstrucut/StructScope$Builder;)Lstrucut/StructScope$Builder;
+}
+
+public abstract interface class strucut/StructScope$Builder {
+	public abstract fun create (Lstrucut/StructScope;)V
+}
+
+public final class strucut/StructScope$Companion {
+	public final fun structureScopeOf (Lstrucut/StructScope$Builder;)Lstrucut/StructScope$Builder;
+}
+
+public final class strucut/StructScopeBuilder : strucut/StructScope {
+	public fun <init> ()V
+	public final fun build ()Lstrucut/StructRoot;
+	public synthetic fun prop (Ljava/lang/String;)Lstrucut/StructScope;
+	public fun prop (Ljava/lang/String;)Lstrucut/StructScopeBuilder;
+	public synthetic fun prop (Ljava/lang/String;Ljava/lang/Object;)Lstrucut/StructScope;
+	public fun prop (Ljava/lang/String;Ljava/lang/Object;)Lstrucut/StructScopeBuilder;
+	public synthetic fun prop (Ljava/lang/String;Lstrucut/StructScope$Builder;)Lstrucut/StructScope;
+	public fun prop (Ljava/lang/String;Lstrucut/StructScope$Builder;)Lstrucut/StructScopeBuilder;
+	public synthetic fun propOpt (Ljava/lang/String;)Lstrucut/StructScope;
+	public fun propOpt (Ljava/lang/String;)Lstrucut/StructScopeBuilder;
+	public synthetic fun propOpt (Ljava/lang/String;Ljava/lang/Object;)Lstrucut/StructScope;
+	public fun propOpt (Ljava/lang/String;Ljava/lang/Object;)Lstrucut/StructScopeBuilder;
+	public synthetic fun propOpt (Ljava/lang/String;Lstrucut/StructScope$Builder;)Lstrucut/StructScope;
+	public fun propOpt (Ljava/lang/String;Lstrucut/StructScope$Builder;)Lstrucut/StructScopeBuilder;
+}
+
+public final class strucut/Strucut {
+	public fun <init> (Lstrucut/StructScope$Builder;)V
+	public final fun verify (Ljava/lang/String;)V
+}
+
+public abstract class strucut/StrucutAssertionError : java/lang/AssertionError {
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class strucut/StrucutAssertionError$ObjectAsProperty : strucut/StrucutAssertionError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Object;)V
+	public final fun getName ()Ljava/lang/String;
+	public final fun getValue ()Ljava/lang/Object;
+}
+
+public final class strucut/StrucutAssertionError$ObjectInObjectMissing : strucut/StrucutAssertionError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Iterable;)V
+	public final fun getKeys ()Ljava/lang/Iterable;
+	public final fun getName ()Ljava/lang/String;
+}
+
+public final class strucut/StrucutAssertionError$PropertyMissing : strucut/StrucutAssertionError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Iterable;)V
+	public final fun getKeys ()Ljava/lang/Iterable;
+	public final fun getName ()Ljava/lang/String;
+}
+
+public final class strucut/StrucutAssertionError$ValueMismatch : strucut/StrucutAssertionError {
+	public fun <init> (Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+	public final fun getActual ()Ljava/lang/Object;
+	public final fun getExpected ()Ljava/lang/Object;
+	public final fun getName ()Ljava/lang/String;
+}
+
+public final class strucut/StrucutAssertionErrorExtKt {
+	public static final fun clone (Lstrucut/StrucutAssertionError;)Lstrucut/StrucutAssertionError;
+}
+
+public final class strucut/StrucutKt {
+	public static final fun verifyStructureOf (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public static final fun verifyStructureOfInternal (Ljava/lang/String;Lstrucut/Struct;)V
+}
+

@@ -7,6 +7,20 @@ on:
       - '*'
 
 jobs:
+  api-compatibility:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Publish Library
+        run: ./gradlew apiCheck
+
   create-release:
     runs-on: ubuntu-latest
     needs: [ publish ]
@@ -16,6 +30,7 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
+    needs: [ api-compatibility ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
