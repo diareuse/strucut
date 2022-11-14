@@ -1,6 +1,18 @@
 # Strucut
 
-Validates JSON structures for required and/or optional properties.
+Strucut is a JSON structure validator for required and/or optional properties. The main purpose is to ensure that your
+serialized string is correct without using the model it was serialized from. This decoupling helps to detect errors or
+renamed properties quickly and efficiently.
+
+> ⚠️ Strucut is not designed to work outside test environment.
+
+## Install
+
+```groovy
+dependencies {
+    testImplementation "io.github.diareuse:strucut:1.0.0"
+}
+```
 
 ## Usage
 
