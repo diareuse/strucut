@@ -1,0 +1,44 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create a release
+        uses: ncipollo/release-action@v1
+
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set version
+        run: echo "VERSION_NAME=${{ github.ref_name }}" >> gradle.properties
+
+      - name: Append variables
+        run: |
+          echo "mavenCentralUsername=${{ secrets.OOSRH_USERNAME }}" >> gradle.properties
+          echo "mavenCentralPassword=${{ secrets.OOSRH_PASSWORD }}" >> gradle.properties
+          echo "signingInMemoryKey=${{ secrets.SIGNING_KEY }}" >> gradle.properties
+          echo "signingInMemoryKeyPassword=${{ secrets.SIGNING_PASSWORD }}" >> gradle.properties 
+
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - name: Build Library
+        run: ./gradlew assemble
+
+      - name: Publish Library
+        run: ./gradlew publishAllPublicationsToMavenCentral
