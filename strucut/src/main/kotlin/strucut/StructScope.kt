@@ -15,4 +15,11 @@ interface StructScope {
         fun StructScope.create()
     }
 
+    companion object {
+
+        @JvmStatic
+        fun structureScopeOf(builder: Builder): Builder = builder
+
+    }
+
 }

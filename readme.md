@@ -30,10 +30,11 @@ public class MyTest {
 
     @Test
     public void testResponseStructure() {
-        StructScope.Builder imageStruct = image -> image
+        var scope = structureScopeOf(image -> image
                 .prop("width")
                 .prop("height")
-                .prop("url");
+                .prop("url")
+        );
         new Strucut(root -> root
                 .prop("id", 1)
                 .prop("name", name -> name
@@ -56,7 +57,7 @@ In Kotlin we would verify the structure like so:
 ```kotlin
 @Test
 fun testResponseStructure() {
-    val imageStruct = StructScope.Builder {
+    val imageStruct = structureScopeOf {
         prop("width")
         prop("height")
         prop("url")
