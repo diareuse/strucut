@@ -3,7 +3,6 @@ public abstract interface class strucut/StructScope {
 	public abstract fun prop (Ljava/lang/String;)Lstrucut/StructScope;
 	public abstract fun prop (Ljava/lang/String;Ljava/lang/Object;)Lstrucut/StructScope;
 	public abstract fun prop (Ljava/lang/String;Lstrucut/StructScope$Builder;)Lstrucut/StructScope;
-	public abstract fun propOpt (Ljava/lang/String;)Lstrucut/StructScope;
 	public abstract fun propOpt (Ljava/lang/String;Ljava/lang/Object;)Lstrucut/StructScope;
 	public abstract fun propOpt (Ljava/lang/String;Lstrucut/StructScope$Builder;)Lstrucut/StructScope;
 	public static fun structureScopeOf (Lstrucut/StructScope$Builder;)Lstrucut/StructScope$Builder;
@@ -26,8 +25,6 @@ public final class strucut/StructScopeBuilder : strucut/StructScope {
 	public fun prop (Ljava/lang/String;Ljava/lang/Object;)Lstrucut/StructScopeBuilder;
 	public synthetic fun prop (Ljava/lang/String;Lstrucut/StructScope$Builder;)Lstrucut/StructScope;
 	public fun prop (Ljava/lang/String;Lstrucut/StructScope$Builder;)Lstrucut/StructScopeBuilder;
-	public synthetic fun propOpt (Ljava/lang/String;)Lstrucut/StructScope;
-	public fun propOpt (Ljava/lang/String;)Lstrucut/StructScopeBuilder;
 	public synthetic fun propOpt (Ljava/lang/String;Ljava/lang/Object;)Lstrucut/StructScope;
 	public fun propOpt (Ljava/lang/String;Ljava/lang/Object;)Lstrucut/StructScopeBuilder;
 	public synthetic fun propOpt (Ljava/lang/String;Lstrucut/StructScope$Builder;)Lstrucut/StructScope;
