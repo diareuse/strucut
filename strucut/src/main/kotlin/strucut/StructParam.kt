@@ -23,15 +23,18 @@ internal data class StructParam(
 
         val expected = value.value
         val actual = topology[name]
-        if (expected is Number && actual is Number)
-            assertEquals(expected.toDouble(), actual.toDouble())
-        else
-            assertEquals(expected, actual)
+        assertEquals(expected.toDoubleOrSelf(), actual)
     }
 
     private fun assertEquals(expected: Any?, actual: Any?) {
         if (expected == actual) return
         throw StrucutAssertionError.ValueMismatch(name, expected, actual)
+    }
+
+    private fun Any?.toDoubleOrSelf(): Any? {
+        if (this is Iterable<*>) return map { it.toDoubleOrSelf() }
+        if (this is Number) return toDouble()
+        return this
     }
 
 }
