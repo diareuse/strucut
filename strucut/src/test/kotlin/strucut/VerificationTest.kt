@@ -116,20 +116,6 @@ class VerificationTest {
     }
 
     @Test
-    fun verifies_optionalProperty_ifPresent() {
-        verifyStructureOf("""{"property":3}""") {
-            propOpt("property")
-        }
-    }
-
-    @Test
-    fun verifies_optionalProperty_ifMissing() {
-        verifyStructureOf("") {
-            propOpt("property")
-        }
-    }
-
-    @Test
     fun throws_optionalProperty_ifPresent() {
         assertThrows<ValueMismatch> {
             verifyStructureOf("""{"property":1}""") {
