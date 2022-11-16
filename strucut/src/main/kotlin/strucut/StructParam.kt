@@ -7,15 +7,15 @@ internal data class StructParam(
 ) : Struct() {
 
     override fun verify(topology: Topology) {
-        assertExists(topology)
-        assertValueEquals(topology)
+        if (assertExists(topology)) assertValueEquals(topology)
     }
 
-    private fun assertExists(topology: Topology) {
+    private fun assertExists(topology: Topology): Boolean {
         if (!topology.containsKey(name)) {
-            if (isOptional) return
+            if (isOptional) return false
             throw StrucutAssertionError.PropertyMissing(name, topology.keys)
         }
+        return true
     }
 
     private fun assertValueEquals(topology: Topology) {
