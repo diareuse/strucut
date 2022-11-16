@@ -18,10 +18,6 @@ internal class StructScopeBuilder : StructScope {
         structs += StructObject(name, false, root)
     }
 
-    override fun propOpt(name: String) = apply {
-        structs += StructParam(name, true, null)
-    }
-
     override fun propOpt(name: String, value: Any?) = apply {
         structs += StructParam(name, true, OptValue(value))
     }
