@@ -9,7 +9,6 @@ internal data class StructObject(
     override fun verify(topology: Topology) {
         assertExists(topology)
         assertValueEquals(topology)
-        value.verify(topology[name] as? Topology ?: return)
     }
 
     private fun assertExists(topology: Topology) {
@@ -21,9 +20,15 @@ internal data class StructObject(
 
     private fun assertValueEquals(topology: Topology) {
         val actualValue = topology[name]
-        if (actualValue !is Map<*, *>) {
-            throw StrucutAssertionError.ObjectAsProperty(name, actualValue)
+        if (actualValue is Map<*, *>) {
+            return value.verify(actualValue as Topology)
         }
+        if (actualValue is Iterable<*>) {
+            return actualValue.forEach {
+                value.verify(it as Topology)
+            }
+        }
+        throw StrucutAssertionError.ObjectAsProperty(name, actualValue)
     }
 
 }
