@@ -232,4 +232,13 @@ class VerificationTest {
         )
     }
 
+    @Test
+    fun validates_array() {
+        verifyStructureOf("""{"a":[{"b": "b"}]}""") {
+            prop("a") {
+                prop("b", "b")
+            }
+        }
+    }
+
 }
