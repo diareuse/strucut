@@ -44,7 +44,7 @@ jobs:
           echo "mavenCentralUsername=${{ secrets.OOSRH_USERNAME }}" >> gradle.properties
           echo "mavenCentralPassword=${{ secrets.OOSRH_PASSWORD }}" >> gradle.properties
           echo "signingInMemoryKey=${{ secrets.SIGNING_KEY }}" >> gradle.properties
-          echo "signingInMemoryKeyPassword=${{ secrets.SIGNING_PASSWORD }}" >> gradle.properties 
+          echo "signingInMemoryKeyPassword=${{ secrets.SIGNING_PASSWORD }}" >> gradle.properties
 
       - name: Set up JDK
         uses: actions/setup-java@v3
